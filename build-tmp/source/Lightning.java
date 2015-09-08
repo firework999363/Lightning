@@ -16,25 +16,27 @@ public class Lightning extends PApplet {
 
 PImage clouds;
 PImage background;
+PImage bclouds;
 float startY = 0;
 float startX;
 float endY;
 float endX;
-int fade;
 
 public void setup()
 {
   size(500,500);
   clouds = loadImage("Clouds.png");
   background = loadImage("background.png");
+  bclouds = loadImage("BClouds.png");
   image(background,0,0);
-  noLoop();
+  frameRate(8);
   strokeWeight(2);
 }
 public void draw()
 {
 	startX = (float)((Math.random()*400)+50);
 	startY = 0;
+	image(bclouds,0,-30);
 	tint(255,100);
 	image(background,0,0);
 	while (endY< Math.random()*50 + 450)
@@ -47,9 +49,8 @@ public void draw()
 		startX = endX;
 		startY = endY;
 	}
-	tint(255,fade);
+	tint(255);
 	image(clouds,0,-30);
-	fade = 255;
 	startY = 0;
 	startX = (float)((Math.random()*400)+50);
 	endX=0;
@@ -57,7 +58,7 @@ public void draw()
 }
 public void mousePressed()
 {
-	redraw();
+	
 }
 
   static public void main(String[] passedArgs) {

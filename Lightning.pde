@@ -1,5 +1,6 @@
 PImage clouds;
 PImage background;
+PImage bclouds;
 float startY = 0;
 float startX;
 float endY;
@@ -10,14 +11,16 @@ void setup()
   size(500,500);
   clouds = loadImage("Clouds.png");
   background = loadImage("background.png");
+  bclouds = loadImage("BClouds.png");
   image(background,0,0);
-  noLoop();
+  frameRate(8);
   strokeWeight(2);
 }
 void draw()
 {
 	startX = (float)((Math.random()*400)+50);
 	startY = 0;
+	image(bclouds,0,-30);
 	tint(255,100);
 	image(background,0,0);
 	while (endY< Math.random()*50 + 450)
@@ -39,6 +42,6 @@ void draw()
 }
 void mousePressed()
 {
-	redraw();
+	
 }
 
